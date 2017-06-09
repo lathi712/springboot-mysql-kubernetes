@@ -1,17 +1,26 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginxsvc
+  creationTimestamp: 2017-06-09T06:45:53Z
   labels:
-    app: nginx
+    run: my-nginx
+  name: my-nginx
+  namespace: default
+  resourceVersion: "222961"
+  selfLink: /api/v1/namespaces/default/services/my-nginx
+  uid: 489286a7-4cdf-11e7-a325-42010a80022d
 spec:
-  type: LoadBalancer
+  clusterIP: 10.23.242.76
   ports:
-  - port: 80
+  - nodePort: 32185
+    port: 80
     protocol: TCP
-    name: http
-  - port: 443
-    protocol: TCP
-    name: https
+    targetPort: 80
   selector:
-    app: nginx
+    run: my-nginx
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - ip: 35.188.6.3
