@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: special-config
-  namespace: default
+  namespace: development
 data:
   app_port: "8080"
   mysql_port: "3306"

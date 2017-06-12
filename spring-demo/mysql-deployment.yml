@@ -4,6 +4,7 @@ metadata:
   name: mysql-deployment
   labels:
     app: mysql
+  namespace: development 
 spec:
   strategy:
     type: Recreate
@@ -17,8 +18,6 @@ spec:
       - image: mysql:5.6
         name: mysql
         env:
-          # $ kubectl create secret generic mysql-pass --from-file=password.txt
-          # make sure password.txt does not have a trailing newline
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
